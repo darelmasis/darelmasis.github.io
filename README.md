@@ -1,7 +1,7 @@
 # darelmasis.github.io
 
-Portafolio personal en forma de terminal interactiva: React 19 + Vite 8 + Tailwind CSS 4,
-sin dependencias de runtime más allá de React.
+Portafolio personal en forma de terminal interactiva, siempre en modo oscuro:
+React 19 + Vite 8 + Tailwind CSS 4, sin dependencias de runtime más allá de React.
 
 Escribe `help` y explora. Tab autocompleta, ↑/↓ recorre el historial, `Ctrl+L` limpia.
 
@@ -34,9 +34,8 @@ src/
   terminal.jsx      ventana, boot animado, historial y autocompletado
   line.jsx          render de cada tipo de línea de salida
   highlight.js      tokenizador JS/JSX + resaltado de línea de comandos
-  chrome.jsx        semáforo, toggle de tema, sesión cerrada
-  theme.js          tema claro/oscuro (sin FOUC, sigue al sistema)
-index.html          meta SEO/OG + script anti-flash del tema
+  chrome.jsx        semáforo y sesión cerrada
+index.html          meta SEO/OG + script que fija el modo oscuro
 scripts/            generador de la tarjeta og.png
 ```
 

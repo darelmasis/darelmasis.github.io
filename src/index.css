@@ -1,51 +1,34 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 /*
-  Solarized Dark (Ethan Schoonover) — paleta de la terminal.
-  base03 fondo, base02 barra, base0 texto, acentos yellow/orange/red/
-  magenta/violet/blue/cyan/green.
+  Paleta dark neutra para la terminal.
+  Superficies casi negras, texto en grises claros y syntax al estilo
+  GitHub Dark: keyword rojo, string/tipo azul, función violeta, comment gris.
 */
 
 .terminal {
-  --base03: #002b36;
-  --base02: #073642;
-  --base01: #586e75;
-  --base00: #657b83;
-  --base0: #839496;
-  --base1: #93a1a1;
-  --base2: #eee8d5;
-  --base3: #fdf6e3;
-  --yellow: #b58900;
-  --orange: #cb4b16;
-  --red: #dc322f;
-  --magenta: #d33682;
-  --violet: #6c71c4;
-  --blue: #268bd2;
-  --cyan: #2aa198;
-  --green: #859900;
+  --term-bg: #161616;
+  --term-bar: #1f1f1f;
+  --term-border: #2e2e2e;
+  --term-fg: #e5e5e5;
+  --term-fg-strong: #fafafa;
+  --term-muted: #8a8a8a;
+  --scroll: #404040;
+  --focus: #a3a3a3;
 
-  --term-bg: var(--base03);
-  --term-bar: var(--base02);
-  --term-border: var(--base02);
-  --term-fg: var(--base0);
-  --term-muted: var(--base01);
-  --scroll: var(--base01);
+  --syn-comment: #8b949e;
+  --syn-string: #a5d6ff;
+  --syn-number: #79c0ff;
+  --syn-keyword: #ff7b72;
+  --syn-type: #ffa657;
+  --syn-attr: #79c0ff;
+  --syn-function: #d2a8ff;
+  --syn-punct: #8a8a8a;
 
-  --syn-comment: var(--base01);
-  --syn-string: var(--cyan);
-  --syn-number: var(--orange);
-  --syn-keyword: var(--green);
-  --syn-type: var(--yellow);
-  --syn-attr: var(--violet);
-  --syn-function: var(--blue);
-  --syn-punct: var(--base01);
-
-  --agn-user-bg: var(--green);
-  --agn-user-fg: var(--base03);
-  --agn-path-bg: var(--blue);
-  --agn-path-fg: var(--base3);
+  --agn-user-bg: #d4d4d4;
+  --agn-user-fg: #121212;
+  --agn-path-bg: #525252;
+  --agn-path-fg: #f5f5f5;
 
   color: var(--term-fg);
   background: var(--term-bg);
@@ -53,13 +36,8 @@
 }
 
 html {
-  color-scheme: light;
-  background-color: #f5f5f5;
-}
-
-html.dark {
   color-scheme: dark;
-  background-color: #002b36;
+  background-color: #121212;
 }
 
 .tok-comment {
@@ -108,54 +86,44 @@ html.dark {
 }
 
 .tok-accent {
-  color: var(--base1);
+  color: var(--term-fg-strong);
   font-weight: 500;
 }
 
 .terminal a:focus-visible,
 .terminal button:focus-visible {
-  outline: 2px solid var(--cyan);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
 
 .terminal-bar {
   background: var(--term-bar);
-  border-bottom: 1px solid var(--base01);
-  color: var(--base01);
+  border-bottom: 1px solid var(--term-border);
+  color: var(--term-muted);
 }
 
 .terminal-title {
-  color: var(--base1);
+  color: var(--term-fg-strong);
 }
 
 .terminal-status {
-  color: var(--base01);
-}
-
-.terminal-toggle {
-  border: 1px solid var(--base01);
-  color: var(--base0);
-}
-
-.terminal-toggle:hover {
-  border-color: var(--base1);
-  color: var(--base1);
+  color: var(--term-muted);
 }
 
 .terminal-closed {
-  border: 1px dashed var(--base01);
-  background: var(--base02);
-  color: var(--base0);
+  border: 1px dashed var(--term-border);
+  background: var(--term-bar);
+  color: var(--term-muted);
 }
 
 .terminal-closed-btn {
-  border: 1px solid var(--base01);
-  color: var(--base0);
+  border: 1px solid var(--term-border);
+  color: var(--term-fg);
 }
 
 .terminal-closed-btn:hover {
-  border-color: var(--base1);
-  color: var(--base1);
+  border-color: var(--term-fg);
+  color: var(--term-fg-strong);
 }
 
 /* Agnoster: user@host  ~  */
@@ -199,7 +167,7 @@ html.dark {
 }
 
 .terminal-caret {
-  color: var(--base1);
+  color: var(--term-fg-strong);
   animation: terminal-blink 1.05s steps(1, end) infinite;
 }
 

@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f5f5f5" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#121212" />
+    <meta name="color-scheme" content="dark" />
     <meta
       name="description"
       content="Terminal personal de Darel Masís, desarrollador y diseñador web. Escribe 'help' y explora."
@@ -32,20 +32,7 @@
     <meta name="twitter:image" content="https://darelmasis.github.io/og.png" />
     <meta name="twitter:image:alt" content="Darel Masís — desarrollador y diseñador web" />
     <script>
-      ;(function () {
-        var stored = null
-        try {
-          stored = window.localStorage.getItem('theme')
-        } catch (error) {
-          stored = null
-        }
-        var dark =
-          stored === 'dark' ||
-          (stored !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
-        document.documentElement.classList.toggle('dark', dark)
-        var meta = document.querySelector('meta[name="theme-color"]')
-        if (meta) meta.setAttribute('content', dark ? '#121212' : '#f5f5f5')
-      })()
+      document.documentElement.classList.add('dark')
     </script>
     <title>Darel Masís — ~/darelmasis</title>
   </head>

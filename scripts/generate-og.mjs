@@ -15,13 +15,14 @@ const HEIGHT = 630
 const SS = 2
 
 const COLOR = {
-  bg: '#002b36',
-  bar: '#073642',
-  rule: '#586e75',
-  fg: '#fdf6e3',
-  muted: '#93a1a1',
-  cyan: '#2aa198',
-  green: '#859900',
+  bg: '#161616',
+  bar: '#1f1f1f',
+  rule: '#2e2e2e',
+  fg: '#fafafa',
+  muted: '#a3a3a3',
+  barText: '#8a8a8a',
+  link: '#a5d6ff',
+  accent: '#d2a8ff',
   light: { red: '#ff5f57', yellow: '#febc2e', green: '#28c840' },
 }
 
@@ -184,12 +185,12 @@ function compose() {
   fillCircle(canvas, s(88), s(40), s(14), COLOR.light.yellow)
   fillCircle(canvas, s(130), s(40), s(14), COLOR.light.green)
 
-  drawText(canvas, 'PORTAFOLIO TERMINAL', s(170), s(50), s(3), '#839496')
+  drawText(canvas, 'PORTAFOLIO TERMINAL', s(170), s(50), s(3), COLOR.barText)
 
   const prompt = '> ESCRIBE HELP Y PULSA ENTER'
   const promptWidth = textWidth(prompt, 3)
   const promptX = Math.round((WIDTH - promptWidth) / 2)
-  drawText(canvas, prompt, s(promptX), s(225), s(3), COLOR.green)
+  drawText(canvas, prompt, s(promptX), s(225), s(3), COLOR.accent)
   fillRect(
     canvas,
     s(promptX + promptWidth + 14),
@@ -199,14 +200,14 @@ function compose() {
     COLOR.muted,
   )
 
-  const title = 'DAREL MASÍS'
+  const title = 'DAREL MASIS'
   drawText(canvas, title, s(Math.round((WIDTH - textWidth(title, 8)) / 2)), s(350), s(8), COLOR.fg)
 
   const role = 'DESARROLLADOR Y DISEÑADOR WEB'
   drawText(canvas, role, s(Math.round((WIDTH - textWidth(role, 4)) / 2)), s(430), s(4), COLOR.muted)
 
   const site = 'DARELMASIS.GITHUB.IO'
-  drawText(canvas, site, s(Math.round((WIDTH - textWidth(site, 3)) / 2)), s(500), s(3), COLOR.cyan)
+  drawText(canvas, site, s(Math.round((WIDTH - textWidth(site, 3)) / 2)), s(500), s(3), COLOR.link)
 
   return canvas
 }

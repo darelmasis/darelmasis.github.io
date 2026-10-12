@@ -95,7 +95,7 @@ export const profile = {
       description:
         'Herramienta para la realización de conciliaciones de ventas y efectivo. Incluye panel de control, auditoría y observabilidad.',
       tech: 'JavaScript, websockets',
-      links: [{ label: 'panel', url: 'https://ava-gules.vercel.app' }],
+      links: [{ label: 'panel', url: 'https://ava-helper.vercel.app' }],
     },
     {
       id: 'calma-calma',
@@ -118,13 +118,13 @@ export const profile = {
       id: 'npm',
       label: 'npm',
       handle: 'darelmasis',
-      url: 'https://www.npmjs.com/~darelmasis',
+      url: 'https://npmjs.com/~darelmasis',
     },
     {
       id: 'linkedin',
       label: 'LinkedIn',
       handle: 'darelmasis',
-      url: 'https://www.linkedin.com/in/darelmasis',
+      url: 'https://linkedin.com/in/darelmasis',
     },
   ],
 }

@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { ClosedSession, ThemeToggle, WindowButtons } from './chrome.jsx'
+import { ClosedSession, WindowButtons } from './chrome.jsx'
 import { COMMANDS, out, runCommand } from './commands.js'
 import { highlightShell } from './highlight.js'
 import { Line, Prompt, Tokens } from './line.jsx'
-import { promptUser } from './profile.js'
-import { useTheme } from './theme.js'
+import { DmLogo } from './logos.jsx'
 
 const BOOT_COMMANDS = ['whoami', 'links']
 const TYPE_SPEED = 55
@@ -44,7 +43,6 @@ const bootLines = () =>
   )
 
 export function Terminal() {
-  const { theme, toggle } = useTheme()
   const reduced = prefersReducedMotion()
   const [lines, setLines] = useState(() => (reduced ? withIds(bootLines()) : []))
   const [typing, setTyping] = useState('')
@@ -53,7 +51,6 @@ export function Terminal() {
   const [history, setHistory] = useState([])
   const [historyIndex, setHistoryIndex] = useState(-1)
   const [view, setView] = useState('open')
-  const [expanded, setExpanded] = useState(false)
 
   const inputRef = useRef(null)
   const screenRef = useRef(null)
@@ -233,88 +230,75 @@ export function Terminal() {
   return (
     <div
       aria-label="Terminal interactiva"
-      className={`terminal relative mx-auto w-full overflow-hidden rounded-lg border shadow-[0_24px_60px_-24px_rgba(0,43,54,0.65)] transition-[max-width] duration-300 ease-out ${
-        expanded ? 'max-w-7xl' : 'max-w-3xl'
-      }`}
+      className="terminal relative mx-auto w-full max-w-3xl overflow-hidden rounded-lg border"
       role="region"
     >
-      <div className="terminal-bar flex h-10 items-center gap-3 px-4">
-        <WindowButtons
-          expanded={expanded}
-          minimized={view === 'minimized'}
-          onClose={() => setView('closed')}
-          onExpand={() => setExpanded((current) => !current)}
-          onMinimize={() => setView((current) => (current === 'minimized' ? 'open' : 'minimized'))}
-        />
+      <div className="terminal-bar flex h-10 items-center gap-4 px-4">
+        <WindowButtons />
         <p className="terminal-status min-w-0 flex-1 truncate text-center text-[11px] sm:text-xs">
-          <span className="terminal-title">{promptUser}</span> — zsh
+          <DmLogo className="mr-2 inline-block h-3.5 w-auto align-[-0.12em] text-[var(--term-fg-strong)] sm:h-4" />
+          {/* <span className="terminal-title">{promptUser}</span> — zsh */}
         </p>
         <p className="terminal-status hidden shrink-0 text-[11px] sm:block">
           {booted ? 'listo' : 'pulsa cualquier tecla para saltar'}
         </p>
-        <ThemeToggle onToggle={toggle} theme={theme} />
       </div>
 
-      {view === 'minimized' ? null : (
-        <div
-          className="terminal-screen h-[58vh] max-h-[560px] min-h-[360px] overflow-y-auto px-4 py-4 text-[12.5px] leading-6 sm:px-6 sm:text-[13.5px]"
-          onClick={focusInput}
-          ref={screenRef}
-        >
-          <div aria-live="polite" className="space-y-0.5 [overflow-wrap:anywhere]">
-            {lines.map((line) => (
-              <Line key={line.id} line={line} />
-            ))}
-          </div>
-
-          {typing ? (
-            <div
-              aria-hidden="true"
-              className="flex flex-wrap items-center [overflow-wrap:anywhere]"
-            >
-              <Prompt />
-              <span className="min-w-0">
-                <Tokens tokens={highlightShell(typing, COMMANDS)} />
-                <span className="terminal-caret">▌</span>
-              </span>
-            </div>
-          ) : null}
-
-          {booted ? (
-            <form
-              className="flex items-center"
-              onSubmit={(event) => {
-                event.preventDefault()
-                submit(value)
-              }}
-            >
-              <Prompt />
-              <span className="relative min-w-0 flex-1">
-                <input
-                  aria-label="Escribe un comando y pulsa Enter"
-                  autoCapitalize="none"
-                  autoComplete="off"
-                  autoCorrect="off"
-                  className="absolute inset-0 h-full w-full bg-transparent text-transparent caret-transparent outline-none"
-                  onChange={(event) => {
-                    setValue(event.target.value)
-                    setHistoryIndex(-1)
-                  }}
-                  onKeyDown={onKeyDown}
-                  ref={inputRef}
-                  spellCheck={false}
-                  type="text"
-                  value={value}
-                />
-                <span aria-hidden="true" className="block break-all whitespace-pre-wrap">
-                  <Tokens tokens={highlightShell(value, COMMANDS)} />
-                  <span className="terminal-caret">▌</span>
-                </span>
-              </span>
-            </form>
-          ) : null}
+      <div
+        className="terminal-screen h-[58vh] max-h-[560px] min-h-[360px] overflow-y-auto px-4 py-4 text-[12.5px] leading-6 sm:px-6 sm:text-[13.5px]"
+        onClick={focusInput}
+        ref={screenRef}
+      >
+        <div aria-live="polite" className="space-y-0.5 [overflow-wrap:anywhere]">
+          {lines.map((line) => (
+            <Line key={line.id} line={line} />
+          ))}
         </div>
-      )}
+
+        {typing ? (
+          <div aria-hidden="true" className="flex flex-wrap items-center [overflow-wrap:anywhere]">
+            <Prompt />
+            <span className="min-w-0">
+              <Tokens tokens={highlightShell(typing, COMMANDS)} />
+              <span className="terminal-caret">▌</span>
+            </span>
+          </div>
+        ) : null}
+
+        {booted ? (
+          <form
+            className="flex items-center"
+            onSubmit={(event) => {
+              event.preventDefault()
+              submit(value)
+            }}
+          >
+            <Prompt />
+            <span className="relative min-w-0 flex-1">
+              <input
+                aria-label="Escribe un comando y pulsa Enter"
+                autoCapitalize="none"
+                autoComplete="off"
+                autoCorrect="off"
+                className="absolute inset-0 h-full w-full bg-transparent text-transparent caret-transparent outline-none"
+                onChange={(event) => {
+                  setValue(event.target.value)
+                  setHistoryIndex(-1)
+                }}
+                onKeyDown={onKeyDown}
+                ref={inputRef}
+                spellCheck={false}
+                type="text"
+                value={value}
+              />
+              <span aria-hidden="true" className="block break-all whitespace-pre-wrap">
+                <Tokens tokens={highlightShell(value, COMMANDS)} />
+                <span className="terminal-caret">█ </span>
+              </span>
+            </span>
+          </form>
+        ) : null}
+      </div>
     </div>
   )
 }
