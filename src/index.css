@@ -1,0 +1,242 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Solarized Dark (Ethan Schoonover) — paleta de la terminal.
+  base03 fondo, base02 barra, base0 texto, acentos yellow/orange/red/
+  magenta/violet/blue/cyan/green.
+*/
+
+.terminal {
+  --base03: #002b36;
+  --base02: #073642;
+  --base01: #586e75;
+  --base00: #657b83;
+  --base0: #839496;
+  --base1: #93a1a1;
+  --base2: #eee8d5;
+  --base3: #fdf6e3;
+  --yellow: #b58900;
+  --orange: #cb4b16;
+  --red: #dc322f;
+  --magenta: #d33682;
+  --violet: #6c71c4;
+  --blue: #268bd2;
+  --cyan: #2aa198;
+  --green: #859900;
+
+  --term-bg: var(--base03);
+  --term-bar: var(--base02);
+  --term-border: var(--base02);
+  --term-fg: var(--base0);
+  --term-muted: var(--base01);
+  --scroll: var(--base01);
+
+  --syn-comment: var(--base01);
+  --syn-string: var(--cyan);
+  --syn-number: var(--orange);
+  --syn-keyword: var(--green);
+  --syn-type: var(--yellow);
+  --syn-attr: var(--violet);
+  --syn-function: var(--blue);
+  --syn-punct: var(--base01);
+
+  --agn-user-bg: var(--green);
+  --agn-user-fg: var(--base03);
+  --agn-path-bg: var(--blue);
+  --agn-path-fg: var(--base3);
+
+  color: var(--term-fg);
+  background: var(--term-bg);
+  border-color: var(--term-border);
+}
+
+html {
+  color-scheme: light;
+  background-color: #f5f5f5;
+}
+
+html.dark {
+  color-scheme: dark;
+  background-color: #002b36;
+}
+
+.tok-comment {
+  color: var(--syn-comment);
+  font-style: italic;
+}
+
+.tok-string {
+  color: var(--syn-string);
+}
+
+.tok-number,
+.tok-literal {
+  color: var(--syn-number);
+}
+
+.tok-keyword {
+  color: var(--syn-keyword);
+}
+
+.tok-tag,
+.tok-type {
+  color: var(--syn-type);
+}
+
+.tok-attr {
+  color: var(--syn-attr);
+}
+
+.tok-function,
+.tok-command {
+  color: var(--syn-function);
+}
+
+.tok-property {
+  color: var(--term-fg);
+}
+
+.tok-punct {
+  color: var(--syn-punct);
+}
+
+.tok-plain,
+.tok-accent {
+  color: var(--term-fg);
+}
+
+.tok-accent {
+  color: var(--base1);
+  font-weight: 500;
+}
+
+.terminal a:focus-visible,
+.terminal button:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+.terminal-bar {
+  background: var(--term-bar);
+  border-bottom: 1px solid var(--base01);
+  color: var(--base01);
+}
+
+.terminal-title {
+  color: var(--base1);
+}
+
+.terminal-status {
+  color: var(--base01);
+}
+
+.terminal-toggle {
+  border: 1px solid var(--base01);
+  color: var(--base0);
+}
+
+.terminal-toggle:hover {
+  border-color: var(--base1);
+  color: var(--base1);
+}
+
+.terminal-closed {
+  border: 1px dashed var(--base01);
+  background: var(--base02);
+  color: var(--base0);
+}
+
+.terminal-closed-btn {
+  border: 1px solid var(--base01);
+  color: var(--base0);
+}
+
+.terminal-closed-btn:hover {
+  border-color: var(--base1);
+  color: var(--base1);
+}
+
+/* Agnoster: user@host  ~  */
+.agnoster {
+  display: inline-flex;
+  align-items: stretch;
+  height: 1.5em;
+  margin-right: 0.55em;
+  vertical-align: middle;
+  font-size: 0.92em;
+}
+
+.agnoster-seg {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.7em 0 0.65em;
+  white-space: nowrap;
+}
+
+.agnoster-chevron {
+  position: absolute;
+  top: 0;
+  right: -0.55em;
+  bottom: 0;
+  width: 0.55em;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  z-index: 2;
+}
+
+.agnoster-user {
+  background: var(--agn-user-bg);
+  color: var(--agn-user-fg);
+}
+
+.agnoster-path {
+  background: var(--agn-path-bg);
+  color: var(--agn-path-fg);
+  padding-left: 0.95em;
+}
+
+.terminal-caret {
+  color: var(--base1);
+  animation: terminal-blink 1.05s steps(1, end) infinite;
+}
+
+@keyframes terminal-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.terminal-screen {
+  color: var(--term-fg);
+  background: var(--term-bg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll) transparent;
+  overscroll-behavior: contain;
+}
+
+.terminal-screen::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-screen::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal-screen::-webkit-scrollbar-thumb {
+  background-color: var(--scroll);
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-caret {
+    animation: none;
+  }
+}
