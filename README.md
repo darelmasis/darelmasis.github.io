@@ -14,16 +14,17 @@ npm run dev      # http://localhost:5174
 
 ## Scripts
 
-| Comando                | Qué hace                            |
-| ---------------------- | ----------------------------------- |
-| `npm run dev`          | servidor de desarrollo              |
-| `npm run build`        | build de producción en `dist/`      |
-| `npm run preview`      | sirve el build en local             |
-| `npm test`             | tests del resaltador de sintaxis    |
-| `npm run lint`         | ESLint                              |
-| `npm run format`       | Prettier (escribir)                 |
-| `npm run format:check` | Prettier (comprobar)                |
-| `npm run og`           | regenera `public/og.png` para redes |
+| Comando                | Qué hace                             |
+| ---------------------- | ------------------------------------ |
+| `npm run dev`          | servidor de desarrollo               |
+| `npm run build`        | build de producción en `dist/`       |
+| `npm run preview`      | sirve el build en local              |
+| `npm test`             | tests del resaltador de sintaxis     |
+| `npm run lint`         | ESLint                               |
+| `npm run format`       | Prettier (escribir)                  |
+| `npm run format:check` | Prettier (comprobar)                 |
+| `npm run og`           | regenera `public/og.png` para redes  |
+| `npm run icons`        | regenera favicons y apple-touch-icon |
 
 ## Estructura
 
@@ -36,7 +37,7 @@ src/
   highlight.js      tokenizador JS/JSX + resaltado de línea de comandos
   chrome.jsx        semáforo y sesión cerrada
 index.html          meta SEO/OG + script que fija el modo oscuro
-scripts/            generador de la tarjeta og.png
+scripts/            generadores de og.png e iconos
 ```
 
 Para cambiar el contenido basta con editar `src/profile.js`.

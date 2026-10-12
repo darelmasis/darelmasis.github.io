@@ -14,10 +14,10 @@ export function App() {
 
         <Terminal />
 
-        <footer className="relative mx-auto flex w-full max-w-3xl flex-col items-center justify-between gap-3 text-[11px] text-neutral-400 sm:flex-row sm:text-xs">
+        <footer className="relative mx-auto flex w-full max-w-4xl flex-col items-center justify-between gap-3 text-[11px] text-neutral-400 sm:flex-row sm:text-xs">
           <p className="flex items-center gap-2.5">
             <DarelLogo className="h-3 w-auto sm:h-3.5" />
-            <span>© {year} · Hecho con intención.</span>
+            <span>• {year} • Hecho con intención.</span>
           </p>
           <nav aria-label="Redes sociales" className="flex gap-5">
             {profile.socials.map((social) => (

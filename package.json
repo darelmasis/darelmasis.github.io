@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "og": "node scripts/generate-og.mjs"
+    "og": "node scripts/generate-og.mjs",
+    "icons": "node scripts/generate-icons.mjs"
   },
   "dependencies": {
     "react": "^19.3.0",
@@ -25,6 +26,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.13.0",
     "prettier": "^3.9.10",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
     "vite": "^8.3.0"
   }

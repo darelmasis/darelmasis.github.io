@@ -2,21 +2,27 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#121212" />
     <meta name="color-scheme" content="dark" />
+    <link rel="canonical" href="https://darelmasis.github.io/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta
       name="description"
-      content="Terminal personal de Darel Masís, desarrollador y diseñador web. Escribe 'help' y explora."
+      content="Terminal interactiva de Darel Masís, desarrollador y diseñador web de Granada, Nicaragua. Escribe 'help' y explora sus proyectos, librerías de React y redes."
     />
     <meta property="og:title" content="Darel Masís — ~/darelmasis" />
     <meta
       property="og:description"
-      content="Terminal personal de Darel Masís. Escribe help y explora."
+      content="Terminal interactiva de Darel Masís, desarrollador y diseñador web. Escribe 'help' y explora proyectos, librerías de npm y sus redes."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://darelmasis.github.io" />
+    <meta property="og:url" content="https://darelmasis.github.io/" />
     <meta property="og:locale" content="es_NI" />
     <meta property="og:site_name" content="Darel Masís" />
     <meta property="og:image" content="https://darelmasis.github.io/og.png" />
@@ -27,17 +33,58 @@
     <meta name="twitter:title" content="Darel Masís — ~/darelmasis" />
     <meta
       name="twitter:description"
-      content="Terminal personal de Darel Masís. Escribe help y explora."
+      content="Terminal interactiva de Darel Masís, desarrollador y diseñador web. Escribe 'help' y explora proyectos, librerías de npm y sus redes."
     />
     <meta name="twitter:image" content="https://darelmasis.github.io/og.png" />
     <meta name="twitter:image:alt" content="Darel Masís — desarrollador y diseñador web" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Darel Masís — ~/darelmasis",
+        "alternateName": "Darel Masís",
+        "url": "https://darelmasis.github.io/",
+        "description": "Terminal interactiva de Darel Masís, desarrollador y diseñador web de Granada, Nicaragua. Escribe 'help' y explora sus proyectos, librerías de React y redes.",
+        "inLanguage": "es",
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Person",
+          "name": "Darel Masís",
+          "jobTitle": "Desarrollador y diseñador web",
+          "url": "https://darelmasis.github.io/",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Granada",
+            "addressCountry": "NI"
+          },
+          "sameAs": [
+            "https://github.com/darelmasis",
+            "https://www.npmjs.com/~darelmasis",
+            "https://www.linkedin.com/in/darelmasis"
+          ]
+        }
+      }
+    </script>
     <script>
       document.documentElement.classList.add('dark')
     </script>
     <title>Darel Masís — ~/darelmasis</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <h1
+        style="
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+        "
+      >
+        Darel Masís — Desarrollador y diseñador web
+      </h1>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

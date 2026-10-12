@@ -230,14 +230,13 @@ export function Terminal() {
   return (
     <div
       aria-label="Terminal interactiva"
-      className="terminal relative mx-auto w-full max-w-3xl overflow-hidden rounded-lg border"
+      className="terminal relative mx-auto w-full max-w-4xl overflow-hidden rounded-lg border"
       role="region"
     >
       <div className="terminal-bar flex h-10 items-center gap-4 px-4">
         <WindowButtons />
         <p className="terminal-status min-w-0 flex-1 truncate text-center text-[11px] sm:text-xs">
-          <DmLogo className="mr-2 inline-block h-3.5 w-auto align-[-0.12em] text-[var(--term-fg-strong)] sm:h-4" />
-          {/* <span className="terminal-title">{promptUser}</span> — zsh */}
+          <DmLogo className="mr-2 inline-block h-3.5 w-auto align-[-0.12em] text-[var(--term-fg-strong)] sm:h-4 opacity-50" />
         </p>
         <p className="terminal-status hidden shrink-0 text-[11px] sm:block">
           {booted ? 'listo' : 'pulsa cualquier tecla para saltar'}
